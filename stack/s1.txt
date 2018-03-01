@@ -1,0 +1,29 @@
+#include "stdafx.h"
+#include <iostream>
+#include <stack>
+
+using namespace std;
+
+
+int main(void)
+{
+	stack<int> stackNum;
+
+	stackNum.push(4);
+	stackNum.push(1);
+	stackNum.push(2);
+
+	printf("현재 stackNum의 크기 : %d\n\n", stackNum.size());
+
+	printf("맨 위에 있는 값 : %d\n\n", stackNum.top());
+
+	while (stackNum.empty() == false)
+	{
+		printf("%d ", stackNum.top());
+		stackNum.pop();
+	}
+
+	printf("\n");
+
+	return 0;
+}

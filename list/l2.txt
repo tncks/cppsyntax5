@@ -1,0 +1,62 @@
+#include "stdafx.h"
+#include <iostream>
+#include <list>
+
+#define PURE = 0
+
+using namespace std;
+
+namespace society {
+	class Human
+	{
+	public:
+		virtual void ShowInfo() PURE;
+	};
+
+	class Police : public Human
+	{
+	public:
+		virtual void ShowInfo()
+		{
+			printf("내 직업은 경찰!\n");
+		}
+	};
+
+	class Chief : public Human
+	{
+	public:
+		virtual void ShowInfo()
+		{
+			printf("내 직업은 셰프!\n");
+		}
+	};
+
+	class Detective : public Human
+	{
+	public:
+		virtual void ShowInfo()
+		{
+			printf("내 이름은 코난! 탐정이죠. \n");
+		}
+	};
+}
+
+int main()
+{
+	list<society::Human*> listHuman(2);
+
+	printf("%d\n\n", listHuman.size());
+
+	society::Police police;
+	listHuman.insert(listHuman.begin(), &police);
+
+	society::Chief chief;
+	listHuman.insert(listHuman.end(), &chief);
+
+	printf("%d\n\n", listHuman.size());
+
+	listHuman.clear();
+
+	return 0;
+}
+

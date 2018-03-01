@@ -1,0 +1,76 @@
+#include "stdafx.h"
+#include <iostream>
+#include <vector>
+
+#define PURE = 0
+
+using namespace std;
+
+namespace society {
+	class Human
+	{
+	public:
+		virtual void ShowInfo() PURE;
+	};
+
+	class Police : public Human
+	{
+	public:
+		virtual void ShowInfo()
+		{
+			printf("내 직업은 경찰!\n");
+		}
+	};
+
+	class Chief : public Human
+	{
+	public:
+		virtual void ShowInfo()
+		{
+			printf("내 직업은 셰프!\n");
+		}
+	};
+
+	class Detective : public Human
+	{
+	public:
+		virtual void ShowInfo()
+		{
+			printf("내 이름은 코난! 탐정이죠. \n");
+		}
+	};
+}
+
+int main()
+{
+	vector<society::Human*> vecHuman(2);
+
+	printf("vecNum의 길이 : %d\n\n", vecHuman.size());
+
+	vecHuman[0] = new society::Police;
+	vecHuman[1] = new society::Chief;
+	
+	for (int i = 0; i < vecHuman.size(); i++)
+	{
+		vecHuman[i]->ShowInfo();
+	}
+	printf("---------------------------------------------\n");
+
+	vecHuman.push_back(new society::Detective);
+	printf("vecHuman의 길이 : %d\n\n", vecHuman.size());
+
+	for (int i = 0; i < vecHuman.size(); ++i)
+	{
+		vecHuman[i]->ShowInfo();
+	}
+	printf("------------------------------------------\n");
+
+	for (int i = 0; i < vecHuman.size(); ++i)
+	{
+		delete vecHuman[i];
+	}
+
+	vecHuman.clear();
+	return 0;
+}
+

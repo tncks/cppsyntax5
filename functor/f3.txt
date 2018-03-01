@@ -1,0 +1,47 @@
+#include "stdafx.h"
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+class Functor
+{
+private:
+	int m_sum;
+public:
+	Functor() : m_sum(0)
+	{
+
+	}
+
+	void ShowNum() const
+	{
+		printf("m_sum : %d\n", m_sum);
+	}
+
+	void operator() (int num)
+	{
+		m_sum += num;
+		ShowNum();
+	}
+};
+
+
+int main(void)
+{
+	vector<int> vecNum;
+	const int vecSize = 10;
+	vecNum.reserve(vecSize);
+
+	for (int i = 0; i < vecSize; ++i)
+	{
+		vecNum.push_back(i);
+	}
+
+	for_each(vecNum.begin(), vecNum.end(), Functor()); // basic constructor call
+
+	printf("\n\n");
+
+	return 0;
+}

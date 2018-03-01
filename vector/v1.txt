@@ -1,0 +1,20 @@
+#include "stdafx.h"
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+	vector<int> vecNum;
+
+	printf("vecNum에 자료 대입 전 \n");
+	printf("vecNum의 길이 : %d\n\n", vecNum.size());
+
+	vecNum.push_back(10);
+	
+	printf("vecNum의 길이 : (대입후) %d\n\n", vecNum.size());
+
+	return 0;
+}
+

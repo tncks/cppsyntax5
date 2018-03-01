@@ -1,0 +1,33 @@
+#include "stdafx.h"
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+class Data
+{
+public:
+	void operator() (int num)
+	{
+		printf("%d ", num);
+	}
+};
+
+int main(void)
+{
+	vector<int> vecNum;
+	const int vecSize = 10;
+	vecNum.reserve(vecSize);
+
+	for (int i = 0; i < vecSize; ++i)
+	{
+		vecNum.push_back(i);
+	}
+
+	for_each(vecNum.begin(), vecNum.end(), Data());
+
+	printf("\n\n");
+
+	return 0;
+}

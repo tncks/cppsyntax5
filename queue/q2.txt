@@ -1,0 +1,29 @@
+#include "stdafx.h"
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
+
+int main(void)
+{
+	priority_queue<int> priorityQueueNum;
+
+	priorityQueueNum.push(6);
+	priorityQueueNum.push(9);
+	priorityQueueNum.push(3);
+
+	printf("현재 크기 : %d\n\n", priorityQueueNum.size());
+
+	printf("맨 위에 있는 값 : %d\n\n", priorityQueueNum.top());
+
+	while (priorityQueueNum.empty() == false)
+	{
+		printf("%d ", priorityQueueNum.top());
+		priorityQueueNum.pop();
+	}
+
+	printf("\n\n");
+
+	return 0;
+}

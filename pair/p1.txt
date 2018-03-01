@@ -1,0 +1,23 @@
+#include "stdafx.h"
+#include <iostream>
+#include <utility>
+
+using namespace std;
+
+int main(void)
+{
+	pair<int, double> pairData;
+
+	pairData.first = 10;
+	pairData.second = 20.0f;
+
+	printf("%d\n", pairData.first);
+	printf("%d\n", pairData.second);
+
+	pairData = make_pair(20, 10.0f);
+
+	printf("%d\n", pairData.first);
+	printf("%d\n", pairData.second);
+
+	return 0;
+}

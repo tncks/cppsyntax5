@@ -1,0 +1,72 @@
+#include "stdafx.h"
+#include <iostream>
+#include <map>
+#include <string>
+
+using namespace std;
+
+struct CustomerInfo
+{
+	string strName;
+	string strAddress;
+};
+
+class Customer
+{
+private:
+	CustomerInfo m_info;
+
+public:
+	Customer(const string strName, const string strAddress)
+	{
+		m_info.strName = strName;
+		m_info.strAddress = strAddress;
+	}
+
+	void ShowInfo() const
+	{
+		printf("고객의 이름 : %s\n", m_info.strName.c_str());
+		printf("고객의 주소 : %s\n\n", m_info.strAddress.c_str());
+	}
+
+};
+
+
+int main(void)
+{
+	map<int, Customer*> mapCustomer;
+
+
+	mapCustomer[1] = new Customer("한민호", "서울시 관악구");
+	mapCustomer[2] = new Customer("이가희", "대구시 동대구");
+	mapCustomer[3] = new Customer("한민호", "인천시 동구");
+
+	printf("전체 고객의 정보\n\n");
+
+	for (map<int, Customer*>::iterator i = mapCustomer.begin(); i != mapCustomer.end(); ++i)
+	{
+		i->second->ShowInfo();
+	}
+
+	map<int, Customer*>::iterator result;
+	result = mapCustomer.find(3);
+
+	if (result->second != nullptr)
+	{
+		printf("3번 고객의 정보\n");
+		result->second->ShowInfo();
+	}
+	else {
+		printf("3번 고객이 없습니다.\n");
+	}
+
+	for (map<int, Customer*>::iterator i = mapCustomer.begin(); i != mapCustomer.end(); ++i)
+	{
+		if (i->second != nullptr)
+		{
+			delete i->second;
+		}
+	}
+
+	return 0;
+}

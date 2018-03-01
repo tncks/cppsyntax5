@@ -1,0 +1,36 @@
+#include "stdafx.h"
+#include <iostream>
+#include <set>
+#include <vector>
+
+using namespace std;
+
+int main(void)
+{
+	vector<int> vecNum = { 1, 4, 8, 9, 6, 3 };
+
+	set<int> setNum(vecNum.begin(), vecNum.end());
+
+	setNum.insert(7);
+
+	for (set<int>::iterator i = setNum.begin(); i != setNum.end(); ++i)
+	{
+		printf("%d ", *i);
+	}
+
+	printf("\n\n");
+
+	set<int>::iterator result;
+	result = setNum.find(8);
+
+	if (result != setNum.end())
+	{
+		printf("8이 있습니다.\n");
+	}
+
+	else {
+		printf("8이 없습니다.\n");
+	}
+
+	return 0;
+}

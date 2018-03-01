@@ -1,0 +1,29 @@
+#include "stdafx.h"
+#include <iostream>
+#include <list>
+
+using namespace std;
+
+int main()
+{
+	list<int> listNum;
+
+	printf("%d\n\n", listNum.size());
+
+	listNum.push_front(4);
+	listNum.push_back(2);
+
+	printf("%d\n\n", listNum.size());
+
+	listNum.pop_front();
+	listNum.pop_back();
+
+	printf("%d", listNum.size());
+
+
+
+
+
+	return 0;
+}
+

@@ -1,0 +1,19 @@
+#include "stdafx.h"
+#include <iostream>
+#include <deque>
+
+using namespace std;
+
+int main(void)
+{
+	deque<int> deqNum;
+
+	printf("%d\n\n", deqNum.size());
+
+	deqNum.push_back(4);
+	deqNum.push_front(2);
+
+	printf("%d\n\n", deqNum.size());
+
+	return 0;
+}

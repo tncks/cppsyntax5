@@ -1,0 +1,82 @@
+#include "stdafx.h"
+#include <iostream>
+#include <deque>
+
+#define PURE = 0
+
+using namespace std;
+
+namespace society {
+	class Human
+	{
+	public:
+		virtual void ShowInfo() PURE;
+	};
+
+	class Police : public Human
+	{
+	public:
+		virtual void ShowInfo()
+		{
+			printf("내 직업은 경찰!\n");
+		}
+	};
+
+	class Chief : public Human
+	{
+	public:
+		virtual void ShowInfo()
+		{
+			printf("내 직업은 셰프!\n");
+		}
+	};
+
+	class Detective : public Human
+	{
+	public:
+		virtual void ShowInfo()
+		{
+			printf("내 이름은 코난! 탐정이죠. \n");
+		}
+	};
+}
+
+int main()
+{
+	deque<society::Human*> deqHuman;
+
+	deqHuman.resize(2);
+
+	printf("%d\n\n", deqHuman.size());
+
+	deqHuman[0] = new society::Police;
+	deqHuman[1] = new society::Chief;
+
+	for (int i = 0; i < deqHuman.size(); ++i)
+	{
+		deqHuman[i]->ShowInfo();
+	}
+
+	printf("--------------------------------------\n");
+
+	deqHuman.push_front(new society::Detective);
+	printf("%d\n\n", deqHuman.size());
+
+
+	for (int i = 0; i < deqHuman.size(); ++i)
+	{
+		deqHuman[i]->ShowInfo();
+	}
+
+	printf("-----------------------------------------------\n");
+
+	for (int i = 0; i < deqHuman.size(); ++i)
+	{
+		delete deqHuman[i];
+	}
+
+	deqHuman.clear();
+
+	return 0;
+}
+

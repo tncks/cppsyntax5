@@ -1,0 +1,36 @@
+#include "stdafx.h"
+#include <iostream>
+#include <map>
+#include <string>
+
+
+using namespace std;
+
+int main(void)
+{
+	map<int, string> mapNum;
+
+	mapNum.insert({ 3,"셋" });
+	mapNum.insert(make_pair(1, "하나"));
+	mapNum[2] = "둘";
+
+	for (map<int, string>::iterator i = mapNum.begin(); i != mapNum.end(); i++)
+	{
+		printf("키 : %d ", i->first);
+		printf("값 : %s\n", i->second.c_str());
+	}
+	
+	map<int, string>::iterator result;
+	result = mapNum.find(2);
+
+	if (result != mapNum.end())
+	{
+		printf("2가 있습니다.");
+	}
+	else {
+		printf("2가 없습니다.");
+	}
+
+
+	return 0;
+}
